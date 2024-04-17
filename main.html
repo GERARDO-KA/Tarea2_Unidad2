@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Minimalist Point of Sale - Selvin Osorio</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    
+    #product {
+      padding: 8px;
+      font-size: 16px;
+      width: 250px; 
+    }
+  </style>
+</head>
+<body>
+  <div id="container">
+    <div id="pos">
+      <h1>Punto de venta Doña Olguis</h1>
+      <label for="product"> <h3> Producto: </h3> </label>
+
+      <select id="product">
+        <option value="" selected disabled>Selecciona Una Opción</option>
+        <option value="Tacos de ojo">Tacos de ojo</option>
+        <option value="Tacos de tacos">Tacos de tacos</option>
+        <option value="Jeringas con helado">Jeringas con helado</option>
+        <option value="Mixtas">Mixtas</option>
+        <option value="Shukos">Shukos</option>
+        <option value="Pan con aji">Pan con aji</option>
+      </select>
+      <br><br>  
+      <label for="price"> <h3>Precio (Q):</h3></label> 
+      <input type="text" id="price" placeholder="Ingresa el precio del producto" required>
+
+      <button onclick="addProduct()">Agregar al carrito</button>
+      
+      <a href=""> <button>Limpiar</button></a>
+
+
+      <h2>Productos:</h2>
+      <ul id="productList"></ul>
+    </div>
+  </div>
+
+  <script>
+    function addProduct() {
+
+      var productSelect = document.getElementById("product");
+      var priceInput = document.getElementById("price");
+      var productList = document.getElementById("productList");
+
+      var product = productSelect.value; 
+      var price = priceInput.value;
+
+      if (product !== "" && price !== "" && product !== "Selecciona Una Opción") { 
+        var listItem = document.createElement("li");
+
+        listItem.textContent = product + " - Q" + price;
+        productList.appendChild(listItem);
+
+ 
+        priceInput.value = "";
+        productSelect.value = ""; 
+      }
+    }
+
+  </script>
+</body>
+</html>
